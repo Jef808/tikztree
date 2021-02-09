@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/jfa/code/projects/TikzTree2/build",
+  "command": "/usr/bin/c++  -I/home/jfa/code/projects/TikzTree2/. -g -std=gnu++17 -o CMakeFiles/tikz.dir/dfs.cpp.o -c /home/jfa/code/projects/TikzTree2/dfs.cpp",
+  "file": "/home/jfa/code/projects/TikzTree2/dfs.cpp"
+},
+{
+  "directory": "/home/jfa/code/projects/TikzTree2/build",
+  "command": "/usr/bin/c++  -I/home/jfa/code/projects/TikzTree2/. -g -std=gnu++17 -o CMakeFiles/test.dir/testutil.cpp.o -c /home/jfa/code/projects/TikzTree2/testutil.cpp",
+  "file": "/home/jfa/code/projects/TikzTree2/testutil.cpp"
+},
+{
+  "directory": "/home/jfa/code/projects/TikzTree2/build",
+  "command": "/usr/bin/c++  -I/home/jfa/code/projects/TikzTree2/. -g -std=gnu++17 -o CMakeFiles/testmain.dir/testmain.cpp.o -c /home/jfa/code/projects/TikzTree2/testmain.cpp",
+  "file": "/home/jfa/code/projects/TikzTree2/testmain.cpp"
+}
+]

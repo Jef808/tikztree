@@ -1,0 +1,20 @@
+\documentclass{minimal}\usepackage{tikz}
+\usetikzlibrary{trees}
+\begin{document}
+\begin{tikzpicture}
+\tikzstyle{every node}=[circle,fill=red!30]
+
+  \node {John}
+    child {node {Kirk}
+      child {node {Alan}}
+      child {node {Alice}}}
+    child {node {Bob}
+      child {node {Johannes}
+        child {node {Livia}
+          child {node {Sophia}}
+          child {node {Johnathan}}
+          child {node {Charles}}
+          child {node {Nathan}}}}};
+\end{tikzpicture}
+\end{document}
+

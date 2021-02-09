@@ -1,10 +1,11 @@
+// -*- c++ -*-
+
 #include "dfs.hpp"
 #include "testutil.hpp"
 #include <iostream>
 
 using namespace tikz;
 using namespace test;
-
 
 int main()
 {

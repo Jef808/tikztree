@@ -3,111 +3,107 @@
 #ifndef __TESTUTIL_H_
 #define __TESTUTIL_H_
 
+#include "dfs.hpp"
 #include <string>
 #include <vector>
-#include "dfs.hpp"
 
 namespace tikz {
 
-    namespace test {
+namespace test {
 
-class NodeTest
-{
-public:
-    NodeTest(const std::string& _val)
-        : value(_val)
-        , children()
-    {}
-
-    ~NodeTest()
-    {
-        for (auto child : children)
+    class NodeTest {
+    public:
+        NodeTest(const std::string& _val)
+            : value(_val)
+            , children()
         {
-            if (child->children.empty())
-            {
-                delete child;
-            }
-            else
-            {
-                child->~NodeTest();
-            }
         }
-        children.clear();
-    }
 
-    NodeTest* add_child(std::string child_string)
-    {
-        children.emplace_back(new NodeTest(child_string));
-        return children.back();
-    }
-    std::vector<NodeTest*> get_children() const
-    {
-        return children;
-    }
-    operator std::string() const
-    {
-        return value;
-    }
-private:
+        ~NodeTest()
+        {
+            for (auto child : children) {
+                if (child->children.empty()) {
+                    delete child;
+                } else {
+                    child->~NodeTest();
+                }
+            }
+            children.clear();
+        }
 
-     std::string value;
-     std::vector<NodeTest*> children;
-};
+        NodeTest* add_child(std::string child_string)
+        {
+            children.emplace_back(new NodeTest(child_string));
+            return children.back();
+        }
+        std::vector<NodeTest*> get_children() const
+        {
+            return children;
+        }
+        operator std::string() const
+        {
+            return value;
+        }
 
-class TestUtil {
+    private:
+        std::string value;
+        std::vector<NodeTest*> children;
+    };
 
-    // John --|-- Kirk --|-- Alan
-    //        |          |-- Alice
-    //        |-- Bob
-public:
-    NodeTest* _root;
+    class TestUtil {
 
-    TestUtil()
-        : _root(nullptr)
-    {
-        reset();
-    }
+        // John --|-- Kirk --|-- Alan
+        //        |          |-- Alice
+        //        |-- Bob
+    public:
+        NodeTest* _root;
 
-    ~TestUtil()
-    {
-        delete _root;
-        _root = nullptr;
-    }
+        TestUtil()
+            : _root(nullptr)
+        {
+            reset();
+        }
 
-    NodeTest* reset()
-    {
-        _root = new NodeTest("John");
+        ~TestUtil()
+        {
+            delete _root;
+            _root = nullptr;
+        }
 
-        _root->add_child("Kirk");
-        _root->add_child("Bob");
+        NodeTest* reset()
+        {
+            _root = new NodeTest("John");
 
-        _root->get_children()[0]->add_child("Alan");
-        _root->get_children()[0]->add_child("Alice");
+            _root->add_child("Kirk");
+            _root->add_child("Bob");
 
-        return _root;
-    }
-};
+            _root->get_children()[0]->add_child("Alan");
+            _root->get_children()[0]->add_child("Alice");
 
-class TestClass {
+            return _root;
+        }
+    };
 
-public:
-    TestClass()
-        : test()
-    {
-    }
+    class TestClass {
 
-    bool test_dfs_store();
-    bool test_write();
-    bool test_bigger_tree();
+    public:
+        TestClass()
+            : test()
+        {
+        }
 
-private:
-    TestUtil test;
+        bool test_dfs_store();
+        bool test_write();
+        bool test_bigger_tree();
 
-    NodeTest* init()
-    {
-        return test.reset();
-    }
-};
+    private:
+        TestUtil test;
+
+        NodeTest* init()
+        {
+            return test.reset();
+        }
+    };
 
 }
 }

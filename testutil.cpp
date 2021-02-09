@@ -1,7 +1,6 @@
 // -*- c++ -*-
 
 #include <iostream>
-
 #include "dfs.hpp"
 #include "testutil.hpp"
 
